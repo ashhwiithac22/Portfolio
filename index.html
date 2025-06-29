@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ashwitha C</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+/>
+
+  <style>
+    :root {
+      --primary: #0000004D; /*Midnight blue  */
+      --secondary: #2ecc71; /* Emerald green */
+      --accent: #e74c3c; /* Alizarin red */
+      --dark: #2c3e50; /* Midnight blue */
+      --light: #ecf0f1; /* Clouds */
+      --highlight: #f1c40f; /* Sunflower yellow */
+      --purple: #9b59b6; /* Amethyst */
+      --orange: #e67e22; /* Carrot */
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background-color: var(--dark);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .navbar .nav-link {
+      color: white;
+      font-weight: 500;
+    }
+    .navbar .nav-link:hover {
+      color: var(--highlight);
+    }
+    .navbar-brand {
+      color: var(--highlight);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .navbar-brand:hover {
+      color: var(--highlight);
+    }
+
+    .hero {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top : 0;
+      left : 0;
+      width : 100%;
+      height : 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(241, 196, 15, 0.1), transparent 70%);
+    }
+    .hero img {
+      width : 180px;
+      border-radius: 50%;
+      border: 4px solid var(--highlight);
+      margin-bottom : 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .hero img:hover {
+      transform: scale(1.05);
+    }
+    .btn-custom {
+      background-color: var(--highlight);
+      color: var(--dark);
+      border: none;
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .btn-custom:hover {
+      background-color: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--highlight);
+      margin-bottom : 30px;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .section-title::after {
+      content: "";
+      width : 80px;
+      height : 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      display: block;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    .interest-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.4s;
+      height : 100%;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .interest-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .interest-card i {
+      font-size: 2.5rem;
+      margin-bottom : 15px;
+      color: var(--highlight);
+    }
+    .data-analysis { color: var(--primary); }
+    .web-dev { color: var(--secondary); }
+    .cyber-security { color: var(--accent); }
+    .cloud { color: var(--purple); }
+    .digital-marketing { color: var(--orange); }
+
+    .skills-section {
+      background: rgba(44, 62, 80, 0.7);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom : 30px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .skill-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .skill-badge:hover {
+      background: var(--highlight);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+    .skill-category {
+      margin-bottom : 20px;
+    }
+    .skill-category h4 {
+      color: var(--highlight);
+      margin-bottom : 15px;
+      position: relative;
+      padding-bottom : 5px;
+    }
+    .skill-category h4::after {
+      content: "";
+      position: absolute;
+      bottom : 0;
+      left : 0;
+      width : 50px;
+      height : 2px;
+      background: var(--primary);
+    }
+
+    .project-card {
+      transition: all 0.4s;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      height : 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card .card-body {
+      background: rgba(44, 62, 80, 0.7);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card .btn-container {
+      margin-top : auto;
+      padding-top : 15px;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+    .project-card .btn {
+      background-color: var(--primary);
+      border: none;
+      transition: all 0.3s;
+      width : 100%;
+    }
+    .project-card .btn:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .experience-card {
+      background: rgba(255,255,255,0.1);
+      border-left : 5px solid var(--highlight);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+    .experience-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .certificate-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.4s;
+      height : 100%;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+    }
+    .certificate-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .certificate-card h4 {
+      color: var(--highlight);
+    }
+
+    .coding-platform-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.4s;
+      height : 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .coding-platform-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .coding-platform-card i {
+      font-size: 3rem;
+      margin-bottom : 15px;
+      color: var(--highlight);
+    }
+    .coding-platform-card .leetcode {
+      color: #ffa116;
+    }
+    .coding-platform-card .gfg {
+      color: #2F8D46;
+    }
+    .coding-platform-card .hackerrank {
+      color: #00EA64;
+    }
+    .coding-platform-card .btn {
+      margin-top : 15px;
+      background-color: var(--primary);
+      border: none;
+    }
+    .coding-platform-card .btn:hover {
+      background-color: var(--accent);
+    }
+
+    .contact-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width : 60px;
+      height : 60px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      margin: 0 15px;
+      color: white;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-icons a:hover {
+      background: var(--highlight);
+      color: var(--dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    footer span {
+      color: var(--highlight);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Ashwitha C</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#interests">Interests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#certificates">Certificates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#coding">Coding Profiles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<section class="hero py-5 bg-dark text-center" id="home" style="position: relative; overflow: hidden;">
+  <img src="E:\PROJECTS\Portfolio\assets\images\Ashwitha C.jpeg" alt="Ashwitha C" class="rounded-circle mb-4 border border-4 border-warning shadow" style="width : 180px;"/>
+  <h1 class="display-4 fw-bold text-warning">Ashwitha C</h1>
+  <p class="lead mb-4 text-white">Data Enthusiast and Creative web Developer </p>
+</section>
+
+ <!-- About -->
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="section-title">Who am I?</h2>
+    <p class="text-center fs-5 mx-auto" style="max-width :750px;">
+      I am Ashwitha. I am studying M.Sc in Decision and Computing Sciences (5-year integrated), from Coimbatore Institute of Technology, batch 2023–2028. I am very interested in data and like to explore and study it to find helpful ideas. I enjoy working with data to solve real-life problems, support good decisions, and build useful solutions. My skills include collecting, cleaning, and showing data in a clear and simple way, and I am excited to keep learning and growing in this field.
+    </p>
+    <p class="text-center fs-5 mt-3">
+      <b>CGPA:</b> 8.69 (till 4th semester)
+    </p>
+    <div class="text-center mt-3">
+      <a href="E:\PROJECTS\Portfolio\assets\certificates\Ashwitha.C - Resume.pdf" class="btn btn-custom" target="_blank">
+  View My Resume
+  <i class="bi bi-eye-fill ms-2"></i>
+</a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Interests -->
+  <section id="interests" class="py-5 bg-dark">
+    <div class="container">
+      <h2 class="section-title">Areas of Interest</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="interest-card">
+            <i class="fas fa-chart-line data-analysis"></i>
+            <h3>Data Analysis</h3>
+            <p>Extracting insights from complex data using statistical methods, machine learning, and data visualization tools.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="interest-card">
+            <i class="fas fa-code web-dev"></i>
+            <h3>Web Development</h3>
+            <p>Building responsive and user-friendly websites using technologies like HTML, CSS and Bootstrap.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="interest-card">
+            <i class="fas fa-shield-alt cyber-security"></i>
+            <h3>Cyber Security</h3>
+            <p>Vulnerability assessment, Subdomain enumeration and reporting these issues responsibly(responsible disclosure)and implementing security practices</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="interest-card">
+            <i class="fas fa-cloud cloud"></i>
+            <h3>Cloud Computing</h3>
+            <p>Storing data in buckets, creating dashboards, monitoring cloud apps, and setting IAM security policies on the cloud platform.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="interest-card">
+            <i class="fas fa-bullhorn digital-marketing"></i>
+            <h3>Digital Marketing</h3>
+            <p>SEO, poster designing, and improving social media engagement using data-driven strategies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Skills & Tools</h2>
+      
+      <div class="skills-section">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="skill-category">
+              <h4>Programming Languages</h4>
+              <div>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">C</span>
+                <span class="skill-badge">R</span>
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS3</span>
+                <span class="skill-badge">SQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="skill-category">
+              <h4>Frameworks & Libraries</h4>
+              <div>
+                <span class="skill-badge">Bootstrap</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Pandas</span>
+                <span class="skill-badge">NumPy</span>
+                <span class="skill-badge">Matplotlib</span>
+                <span class="skill-badge">Seaborn</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="skill-category">
+              <h4>Tools & Platforms</h4>
+              <div>
+                <span class="skill-badge">VS Code</span>
+                <span class="skill-badge">GitHub</span>
+                <span class="skill-badge">Jupyter Notebook</span>
+                <span class="skill-badge">IntelliJ IDEA</span>
+                <span class="skill-badge">MySQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="skill-category">
+              <h4>Other Skills</h4>
+              <div>
+                <span class="skill-badge">Data Visualization</span>
+                <span class="skill-badge">Machine Learning</span>
+                <span class="skill-badge">Google cloud Basics</span>
+                <span class="skill-badge">Bug Hunting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-5 bg-dark">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="experience-card">
+            <h3>Editing Head — 403 Strats CIT</h3>
+            <small class="text-light">June 2025 - June 2026</small>
+            <ul>
+              <li>Guided and managed a team of designers to create posts, videos, and other content for the 403 Strats Club.</li>
+              <li>Reviewed and edited content to make sure it was clear, correct, and well-designed.</li>
+              <li>Helped the team follow consistent style and quality standards.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <h4 class="card-title" style="color: var(--highlight);">RideShare Optimizer</h4>
+              <p class="card-text" style="color: white;">Ride Sharing and Trip Planner.A Python + Streamlit app that uses graph algorithms to optimize cost-efficient, multi-stop and ride-sharing routes.</p>
+              <div class="mb-3">
+                <span class="badge bg-primary">Python</span>
+                <span class="badge bg-secondary">Streamlit</span>
+                <span class="badge bg-success">Advanced Data Structures</span>
+              </div>
+              <div class="btn-container">
+                <a href="https://github.com/ashhwiithac22/RideShare-Optimizer" class="btn btn-primary" target="_blank">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+             <h4 class="card-title" style="color: var(--highlight);">Financial Analytics Platform using AI</h4>
+             <p class="card-text" style="color: white;">Financial Analytics AI Platform — Python-based Streamlit application for options pricing, implied volatility, live financial data analysis, and an AI-powered finance assistant </p>
+              <div class="mb-3">
+                <span class="badge bg-primary">Python</span>
+                <span class="badge bg-secondary">Pandas</span>
+                <span class="badge bg-success">NumPy</span>
+              </div>
+              <div class="btn-container">
+                <a href="https://github.com/ashhwiithac22/Financial-AI--Analytics-Platform" class="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <h4 class="card-title" style="color: var(--highlight);">Phishing Url Detection Application</h4>
+             <p class="card-text" style="color: white;">A phishing URL detector web app using machine learning algorithms (Logistic Regression, Linear Regression, K-Means) with a Streamlit interface for real-time predictions</p>
+              <div class="mb-3">
+                <span class="badge bg-primary">Logistic Regression</span>
+                <span class="badge bg-secondary">Linear Regression</span>
+                <span class="badge bg-success">K-means</span>
+              </div>
+              <div class="btn-container">
+                <a href="https://github.com/ashhwiithac22/phishing-url-detector-application" class="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 mx-auto">
+          <div class="card project-card h-100">
+            <div class="card-body">
+            <h4 class="card-title" style="color: var(--highlight);">Customer Reltionship Management</h4>
+             <p class="card-text" style="color: white;">A Java Swing–based CRM desktop application with MySQL backend to manage customers, sales orders, and transactions through a role-based user interface.</p>
+              <div class="mb-3">
+                <span class="badge bg-primary">Java</span>
+                <span class="badge bg-secondary">MySQL</span>
+                <span class="badge bg-success">JDBC</span>
+              </div>
+              <div class="btn-container">
+                <a href="https://github.com/ashhwiithac22/Customer_Realtionship_Management-System" class="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+  <!-- Certificates -->
+<section id="certificates" class="py-5 bg-dark">
+  <div class="container">
+    <h2 class="section-title">Certificates</h2>
+    <div class="row g-4">
+
+      <!-- Accenture -->
+      <div class="col-md-6 col-lg-4">
+        <div class="certificate-card">
+          <h4>Data Visualization</h4>
+          <p>Accenture | Forage</p>
+          <small class="text-light">Issued May 2024</small><br>
+          <a href="assets/certificates/ACCENTURE DATA ANALYTICS - JOB SIMULATION CERTIFICATE.pdf" target="_blank" class="btn btn-primary mt-2">View Certificate</a>
+        </div>
+      </div>
+
+      <!-- Digital Marketing -->
+      <div class="col-md-6 col-lg-4">
+        <div class="certificate-card">
+          <h4>Digital Marketing</h4>
+          <p>Google</p>
+          <small class="text-light">Issued September 2024</small><br>
+          <a href="https://skillshop.exceedlms.com/profiles/3a1d67ee4c0845e1bc4fe57f16cfad56" target="_blank" class="btn btn-primary mt-2">View Certificate</a>
+        </div>
+      </div>
+
+      <!-- Bug Bounty -->
+      <div class="col-md-6 col-lg-4">
+        <div class="certificate-card">
+          <h4>Bug Bounty Program</h4>
+          <p>Prompt Infotech</p>
+          <small class="text-light">Issued January 2025</small><br>
+          <a href="assets/certificates/BUG BOUNTY CERTIFICATE.pdf" target="_blank" class="btn btn-primary mt-2">View Certificate</a>
+        </div>
+      </div>
+
+      <!-- Trainity -->
+      <div class="col-md-6 col-lg-6">
+        <div class="certificate-card">
+          <h4>Data Analysis Virtual Internship</h4>
+          <p>Trainity</p>
+          <p>Duration - 3 Months</p>
+          <small class="text-light">Issued August 2024</small><br>
+          <a href="assets/certificates/Trainity Internship Certificate.pdf" target="_blank" class="btn btn-primary mt-2">View Certificate</a>
+        </div>
+      </div>
+
+      <!-- Cyber Security -->
+      <div class="col-md-6 col-lg-6">
+        <div class="certificate-card">
+          <h4>Cyber Security and Privacy</h4>
+          <p>NPTEL</p>
+          <p>Duration - 3 months (12 weeks)</p>
+          <small class="text-light">Issued November 2024</small><br>
+          <a href="assets/certificates/Cyber Security and Privacy - nptel.pdf" target="_blank" class="btn btn-primary mt-2">View Certificate</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Coding Platforms -->
+  <section id="coding" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Coding Profiles</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="coding-platform-card">
+            <i class="fa-solid fa-terminal leetcode"></i>
+            <h3>LeetCode</h3>
+            <p>Solved coding challenges involving databases</p>
+            <a href="https://leetcode.com/u/OOLY6Vc2Xe/" target="_blank" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="coding-platform-card">
+            <i class="fa-solid fa-laptop-code gfg"></i>
+            <h3>GeeksforGeeks</h3>
+            <p>Solved coding challenges focused on data structures</p>
+            <a href="https://www.geeksforgeeks.org/user/ashwithacax7l/" target="_blank" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="coding-platform-card">
+            <i class="fa-brands fa-hackerrank hackerrank"></i>
+            <h3>HackerRank</h3>
+            <p>Problem solved using Python</p>
+            <a href="https://www.hackerrank.com/profile/ashwithacchandru" target="_blank" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5 bg-dark">
+    <div class="container text-center">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="fs-5">Let's Connect</p>
+      <div class="contact-icons my-4">
+        <a href="https://github.com/ashhwiithac22" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ashwitha-c/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/919345048662" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ashwithac22@gmail.com" title="Email" target="_blank">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; <span id="year"></span> <span>Ashwitha C</span>. All rights reserved.
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    // Update copyright year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
